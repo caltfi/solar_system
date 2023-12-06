@@ -1,0 +1,97 @@
+:root{
+    --dark-colour: #1a4052;
+    --dark-colour-2: #245972;
+    --light-colour: rgb(127,255,212);
+    --light-colour-transparent: rgba(127,255,212, 0.5)
+}
+body{
+    font-family: 'Orbitron', sans-serif;
+}
+#title{
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    color: var(--light-colour);
+    margin-right: 15px;
+    padding: 5px;
+    text-align: right;
+}
+#gui{
+    width:400px;
+    height: 100vh;
+    background-color: var(--dark-colour);
+    position: absolute;
+    color: var(--light-colour);
+    border-right: 2px solid var(--light-colour);
+    box-shadow: 15px 0px 21px 5px var(--light-colour-transparent);
+    -webkit-box-shadow: 15px 0px 21px 5px var(--light-colour-transparent);
+    -moz-box-shadow: 15px 0px 21px 5px var(--light-colour-transparent);
+    padding: 15px;
+    overflow: scroll;
+}
+.gui-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.gui-button {
+    box-shadow: 0px 0px 2px 3px var(--light-colour-transparent);
+    background:linear-gradient(to bottom, var(--dark-colour-2) 5%, var(--dark-colour) 100%);
+    background-color:var(--dark-colour-2);
+    border-radius:10px;
+    border:1px solid var(--light-colour);
+    /* display:inline-block; */
+    cursor:pointer;
+    color:#ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size:19px;
+    padding:15px 37px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #283966;
+    width: 350px;
+    margin-bottom: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.gui-button:hover {
+    background: linear-gradient(to bottom, var(--dark-colour) 5%, var(--dark-colour-2) 100%);
+    background-color:var(--dark-colour);
+}
+.gui-button:active {
+    position:relative;
+    top:1px;
+}
+.button-img{
+    max-width: 100px;
+    margin-right: 20px;
+}
+.img-name-button{
+    display: flex;
+    align-items: center;
+}
+svg{
+    fill: var(--light-colour);
+    width: 30px;
+    height: 30px;
+}
+.links-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.links{
+    text-decoration: none;
+    color: var(--light-colour);
+    font-family: 'Orbital', sans-serif;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.links > svg{
+    margin-right: 5px;
+}

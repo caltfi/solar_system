@@ -1,0 +1,8 @@
+#====== GIT IGNORE ============
+
+#prototype OOP version
+simple_solar.js
+
+#too many files!
+libs/*
+assets/*

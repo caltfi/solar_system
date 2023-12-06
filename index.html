@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System with Three.js</title>
+</head>
+<body style="overflow: hidden; margin: 0; padding:0">
+    <div id="container">
+        <video id="sun" webkit-playsinline style="display:none" preload="auto" >
+            <source src="./assets/solarmap.mp4" type="video/mp4">
+        </video>
+    </div>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "./libs/three.module.js",
+                "three/addons/": "./libs/"
+            }
+        }
+    </script>
+    <script type="module" src="./solar_system.js"></script>
+</body>
+</html>

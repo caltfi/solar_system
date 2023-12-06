@@ -1,8 +1,10 @@
 :root{
-    --dark-colour: #1a4052;
-    --dark-colour-2: #245972;
-    --light-colour: rgb(127,255,212);
-    --light-colour-transparent: rgba(127,255,212, 0.5)
+    --white: rgb(255, 255, 255);
+    --rich-black: rgb(0, 23, 31);
+    --prussian-blue: rgb(0, 52, 89);
+    --cerulean: rgb(0, 126, 167);
+    --picton-blue: rgb(0, 168, 232);
+    --picton-blue-transparent: rgba(0, 168, 232, 0.5)
 }
 body{
     font-family: 'Orbitron', sans-serif;
@@ -11,21 +13,30 @@ body{
     bottom: 0;
     right: 0;
     position: absolute;
-    color: var(--light-colour);
+    color: var(--picton-blue);
     margin-right: 15px;
     padding: 5px;
     text-align: right;
 }
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 3px solid var(--picton-blue-transparent);
+    margin: 1em 0;
+    padding: 0;
+    width: 100%;
+}
 #gui{
     width:400px;
     height: 100vh;
-    background-color: var(--dark-colour);
+    background-color: var(--rich-black);
     position: absolute;
-    color: var(--light-colour);
-    border-right: 2px solid var(--light-colour);
-    box-shadow: 15px 0px 21px 5px var(--light-colour-transparent);
-    -webkit-box-shadow: 15px 0px 21px 5px var(--light-colour-transparent);
-    -moz-box-shadow: 15px 0px 21px 5px var(--light-colour-transparent);
+    color: var(--picton-blue);
+    border-right: 2px solid var(--picton-blue);
+    box-shadow: 15px 0px 21px 5px var(--picton-blue-transparent);
+    -webkit-box-shadow: 15px 0px 21px 5px var(--picton-blue-transparent);
+    -moz-box-shadow: 15px 0px 21px 5px var(--picton-blue-transparent);
     padding: 15px;
     overflow: scroll;
 }
@@ -38,11 +49,11 @@ body{
     margin-bottom: 15px;
 }
 .gui-button {
-    box-shadow: 0px 0px 2px 3px var(--light-colour-transparent);
-    background:linear-gradient(to bottom, var(--dark-colour-2) 5%, var(--dark-colour) 100%);
-    background-color:var(--dark-colour-2);
+    box-shadow: 0px 0px 2px 3px var(--picton-blue-transparent);
+    background:linear-gradient(to bottom, var(--prussian-blue) 5%, var(--rich-black) 100%);
+    background-color:var(--prussian-blue);
     border-radius:10px;
-    border:1px solid var(--light-colour);
+    border:1px solid var(--picton-blue);
     /* display:inline-block; */
     cursor:pointer;
     color:#ffffff;
@@ -59,8 +70,8 @@ body{
     justify-content: space-between;
 }
 .gui-button:hover {
-    background: linear-gradient(to bottom, var(--dark-colour) 5%, var(--dark-colour-2) 100%);
-    background-color:var(--dark-colour);
+    background: linear-gradient(to bottom, var(--rich-black) 5%, var(--prussian-blue) 100%);
+    background-color:var(--rich-black);
 }
 .gui-button:active {
     position:relative;
@@ -75,7 +86,7 @@ body{
     align-items: center;
 }
 svg{
-    fill: var(--light-colour);
+    fill: var(--white);
     width: 30px;
     height: 30px;
 }
@@ -86,7 +97,7 @@ svg{
 }
 .links{
     text-decoration: none;
-    color: var(--light-colour);
+    color: var(--picton-blue);
     font-family: 'Orbital', sans-serif;
     display: flex;
     align-items: center;
@@ -94,4 +105,5 @@ svg{
 }
 .links > svg{
     margin-right: 5px;
+    fill: var(--picton-blue);
 }

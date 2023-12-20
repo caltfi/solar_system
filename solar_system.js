@@ -23,6 +23,17 @@ loadingManager.onError    = () => {console.log('Error!')};
 var width = window.innerWidth;
 var height = window.innerHeight;
 
+//planetary orbit radii
+const mercuryOrbitRadius = 20;
+const venusOrbitRadius = 25;
+const earthOrbitRadius = 30;
+const marsOrbitRadius = 35;
+const jupiterOrbitRadius = 55;
+const saturnOrbitRadius = 70;
+const uranusOrbitRadius = 80;
+const neptuneOrbitRadius = 90;
+const plutoOrbitRadius = 100;
+
 // Create Scene
 function createScene() {
   scene = new THREE.Scene();
@@ -65,7 +76,7 @@ function createSun(){
 }
 
 // Create planets
-function createPlanets(name, texture, normal, size, isSat, isMoon) {
+function createPlanets(name, texture, normal, size, isSat, isMoon, orbitRadius) {
   // Planets
   const textLoader  = new THREE.TextureLoader(loadingManager);
   const imgTexture  = textLoader.load(texture);
@@ -117,6 +128,28 @@ function createPlanets(name, texture, normal, size, isSat, isMoon) {
     newPlanet.name        = name;
     scene.add(newPlanet);
   }
+
+  //add planet orbit radius line
+  const segments = 64;
+  const orbitLineGeometry = new THREE.BufferGeometry();
+  const orbitLineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, opacity: 0.5, transparent: true });
+  const orbitLineVertices = [];
+
+  for (let i = 0; i <= segments; i++) {
+    const theta = (i / segments) * Math.PI * 2;
+    const x = orbitRadius * Math.cos(theta);
+    const z = orbitRadius * Math.sin(theta);
+
+    orbitLineVertices.push(x, 0, z);
+  }
+
+  orbitLineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(orbitLineVertices, 3));
+  const orbitLine = new THREE.Line(orbitLineGeometry, orbitLineMaterial);
+  orbitLine.position.y = 0;
+  orbitLine.position.x = 0;
+  orbitLine.position.z = 0;
+  orbitLine.name = `${name}OrbitLine`;
+  scene.add(orbitLine);
 }
 
 function updatePlanetOrbit(planetName, rotationSpeed, orbitRadius) {
@@ -221,17 +254,6 @@ function animate() {
   scene.getObjectByName('neptune').rotation.y   += 0.005;
   scene.getObjectByName('pluto').rotation.y     += 0.005;
 
-  //planet orbits
-  const mercuryOrbitRadius = 20;
-  const venusOrbitRadius = 25;
-  const earthOrbitRadius = 30;
-  const marsOrbitRadius = 35;
-  const jupiterOrbitRadius = 55;
-  const saturnOrbitRadius = 70;
-  const uranusOrbitRadius = 80;
-  const neptuneOrbitRadius = 90;
-  const plutoOrbitRadius = 100;
-
   //All the planets
   updatePlanetOrbit('mercury', 0.1, mercuryOrbitRadius);
   updatePlanetOrbit('venus', 0.09, venusOrbitRadius);
@@ -271,15 +293,15 @@ function init() {
   createSun();
   createLight();
   //All the planets
-  createPlanets('mercury', './assets/mercury.jpg', './assets/mercurynormal.jpeg',  0.3, false, false);
-  createPlanets('venus', './assets/venus.webp', './assets/mercurynormal.jpeg',     0.5, false, false);
-  createPlanets('earth', './assets/earthmap4k.webp', './assets/earthnormal.png',   1, false,  true);
-  createPlanets('mars', './assets/mars1k.jpg', './assets/marsnormal.png',          1, false, false);
-  createPlanets('jupiter', './assets/jupiter.jpg', './assets/jupiternormal.png',   3, false, false);
-  createPlanets('saturn', './assets/saturn.webp', './assets/jupiternormal.png',    2,  true, false);
-  createPlanets('uranus', './assets/uranus.webp', './assets/neptunenormal.jpeg',   1.2, false, false);
-  createPlanets('neptune', './assets/neptune.jpeg', './assets/neptunenormal.jpeg', 1.2, false, false);
-  createPlanets('pluto', './assets/pluto.jpeg', './assets/marsnormal.png',         0.3, false, false);
+  createPlanets('mercury', './assets/mercury.jpg', './assets/mercurynormal.jpeg',  0.3, false, false, mercuryOrbitRadius);
+  createPlanets('venus', './assets/venus.webp', './assets/mercurynormal.jpeg',     0.5, false, false, venusOrbitRadius);
+  createPlanets('earth', './assets/earthmap4k.webp', './assets/earthnormal.png',   1, false,  true, earthOrbitRadius);
+  createPlanets('mars', './assets/mars1k.jpg', './assets/marsnormal.png',          1, false, false, marsOrbitRadius);
+  createPlanets('jupiter', './assets/jupiter.jpg', './assets/jupiternormal.png',   3, false, false, jupiterOrbitRadius);
+  createPlanets('saturn', './assets/saturn.webp', './assets/jupiternormal.png',    2,  true, false, saturnOrbitRadius);
+  createPlanets('uranus', './assets/uranus.webp', './assets/neptunenormal.jpeg',   1.2, false, false, uranusOrbitRadius);
+  createPlanets('neptune', './assets/neptune.jpeg', './assets/neptunenormal.jpeg', 1.2, false, false, neptuneOrbitRadius);
+  createPlanets('pluto', './assets/pluto.jpeg', './assets/marsnormal.png',         0.3, false, false, plutoOrbitRadius);
   //create the main asteroid belt
   createAsteroidBelt(40, 300);
   //create the kuiper asteroid belt

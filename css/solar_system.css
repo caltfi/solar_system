@@ -1,7 +1,7 @@
 :root{
     --white: rgb(255, 255, 255);
-    --rich-black: rgb(0, 23, 31);
-    --prussian-blue: rgb(0, 52, 89);
+    --rich-black: rgba(0, 23, 31, 0.6);
+    --prussian-blue: rgba(0, 52, 89, 0.4);
     --cerulean: rgb(0, 126, 167);
     --picton-blue: rgb(0, 168, 232);
     --picton-blue-transparent: rgba(0, 168, 232, 0.5)
